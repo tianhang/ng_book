@@ -9,6 +9,13 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
-
+.controller('View1Ctrl', ['$scope','$timeout',function($scope,$timeout) {
+    //$scope.time = new Date();
+    $scope.clock = new Date();
+    var updateTime = function () {
+      $scope.clock = new Date();
+    };
+    setInterval(function () {
+      $scope.$apply(updateTime);
+    },1000);
 }]);
